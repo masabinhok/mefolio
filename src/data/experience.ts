@@ -11,7 +11,7 @@ export const experience = [
   },
   {
     timeline : "Then - Now",
-    institution: "Seeking for Remote Jobs/Internships",
+    institution: "Seeking for Remote Jobs / Internships",
     course: "Full Stack Developer"
   },
  

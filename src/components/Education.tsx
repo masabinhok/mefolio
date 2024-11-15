@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Education = () => {
   return (
-    <div className="mt-5 flex ">
+    <div className="mt-5 flex max-md:flex-col">
       <div className="flex-1">
         {education.map((item) => (
           <div className="flex mb-5 flex-col" key={item.institution}>

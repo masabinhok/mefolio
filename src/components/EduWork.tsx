@@ -21,7 +21,7 @@ const EduWork = () => {
 
       <div className="flex justify-between w-full">
         {sections.map((item) => (
-          <button disabled={item === section} onClick={() => {
+          <button key={item} disabled={item === section} onClick={() => {
             handleSwap(item)
           }} className={cn("flexbox",
             section === item ? 'bg-primary  !text-background' : '',
