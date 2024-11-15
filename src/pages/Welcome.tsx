@@ -13,10 +13,11 @@ import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress"
 import Portfolio from "./Portfolio";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import { useVisitor } from "@/context/VisitorContext";
 
 
 const Welcome = () => {
-  const [visitor, setVisitor] = useState<string>('');
+  const { visitor, setVisitor } = useVisitor();
   const [hasName, setHasName] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgess] = useState(13);
