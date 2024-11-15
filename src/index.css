@@ -1,0 +1,56 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Geist Mono", monospace;
+}
+
+@layer base {
+  :root {
+    --background: rgb(255, 255, 255);
+    --foreground: rgb(22, 22, 22);
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(22, 22, 22);
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(22, 22, 22);
+    --primary: rgb(23, 23, 23);
+    --primary-foreground: rgb(250, 250, 250);
+    --secondary: rgb(244, 244, 244);
+    --secondary-foreground: rgb(23, 23, 23);
+    --muted: rgb(244, 244, 244);
+    --muted-foreground: rgb(73, 73, 73);
+    --accent: rgb(244, 244, 244);
+    --accent-foreground: rgb(23, 23, 23);
+    --destructive: rgb(255, 102, 85);
+    --destructive-foreground: rgb(250, 250, 250);
+    --border: rgb(38, 38, 38);
+    --input: rgb(38, 38, 38);
+    --ring: rgb(23, 23, 23);
+    --radius: 0.5rem;
+  }
+
+  /* Dark mode settings */
+  .dark {
+    --background: rgb(22, 22, 22);
+    --foreground: rgb(250, 250, 250);
+    --card: rgb(22, 22, 22);
+    --card-foreground: rgb(250, 250, 250);
+    --popover: rgb(22, 22, 22);
+    --popover-foreground: rgb(250, 250, 250);
+    --primary: rgb(250, 250, 250);
+    --primary-foreground: rgb(23, 23, 23);
+    --secondary: rgb(126, 126, 126);
+    --secondary-foreground: rgb(250, 250, 250);
+    --muted: rgb(48, 48, 48);
+    --muted-foreground: rgb(56, 56, 56);
+    --accent: rgb(48, 48, 48);
+    --accent-foreground: rgb(250, 250, 250);
+    --destructive: rgb(204, 102, 85);
+    --destructive-foreground: rgb(250, 250, 250);
+    --border: rgb(48, 48, 48);
+    --input: rgb(48, 48, 48);
+    --ring: rgb(179, 179, 179);
+  }
+}
