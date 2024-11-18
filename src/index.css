@@ -9,7 +9,7 @@
 
 @layer utilities {
   .tranimate {
-    @apply transition-all ease-in-out duration-500
+    @apply transition-all ease-in duration-500
   }
 
   .flexbox {
@@ -19,7 +19,15 @@
   .section {
     @apply text-secondary max-w-[768px] w-full p-5 flex flex-col
   }
+
+  .icon-rotate {
+    @apply hover:text-primary tranimate  hover:rotate-45  !duration-1000
+  }
 }
+
+
+
+
 
 @layer base {
   :root {
