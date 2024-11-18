@@ -1,5 +1,5 @@
 import AboutMe from "@/components/AboutMe"
-import EduWork from "@/components/EduWork"
+import EduWork from "@/components/EduExp"
 
 const Portfolio = () => {
   return (
