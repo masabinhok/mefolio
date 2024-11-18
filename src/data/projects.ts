@@ -8,7 +8,7 @@ export const projects = [
     imageURL: [
       react, vite, react, vite,
     ],
-    githubLink: "",
+    githubLink: "https://github.com/masabinhok/conexusHub",
     techStack :[
       "React", "Node.js", "MongoDB", "Express"
     ]
@@ -20,7 +20,7 @@ export const projects = [
     imageURL: [
       react, vite, react, vite,
     ],
-    githubLink: "",
+    githubLink: "https://www.github.com/masabinhok/stash",
     techStack :[
       "Next.js", "Appwrite", "TailwindCSS",
     ]
