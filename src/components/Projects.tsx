@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects"
-import { ArrowDropUp, ArrowRightAltSharp, GitHub, Language } from "@mui/icons-material"
+import { ArrowRightAltSharp, GitHub, Language } from "@mui/icons-material"
 import { ArrowBigUpDashIcon } from "lucide-react"
 import { useState } from "react"
 
