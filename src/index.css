@@ -9,7 +9,11 @@
 
 @layer utilities {
   .tranimate {
-    @apply transition-all ease-in duration-500
+    @apply transition-all ease-in-out  duration-300
+  }
+
+  .sec-head {
+    @apply w-fit hover:text-primary tranimate
   }
 
   .flexbox {
