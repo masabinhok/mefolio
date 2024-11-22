@@ -1,4 +1,5 @@
 import AboutMe from "@/components/AboutMe"
+import Canvas from "@/components/Canvas"
 import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
@@ -9,7 +10,9 @@ const Portfolio = () => {
       <AboutMe />
       <EduExp />
       <Projects />
+      <Canvas />
       <Footer />
+
     </main>
   )
 }
