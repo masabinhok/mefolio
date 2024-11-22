@@ -1,14 +1,16 @@
 import { useVisitor } from "@/context/VisitorContext";
 import { DeleteForever } from "@mui/icons-material";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "./ui/separator";
 import React, { useEffect, useRef, useState } from "react"
+import { Send } from "lucide-react";
 
 const Canvas: React.FC = () => {
   const { visitor } = useVisitor();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>
     (false);
-  const [color, setColor] = useState<string>('red')
+  const [color, setColor] = useState<string>('#ff0000')
+  const [width, setWidth] = useState<number>(1)
 
   const startDrawing = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = event.nativeEvent;
@@ -41,6 +43,7 @@ const Canvas: React.FC = () => {
     if (!ctx) return;
 
     ctx.lineWidth = width;
+    setWidth(width)
   }
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const Canvas: React.FC = () => {
     const ctx = canvas.getContext('2d')
     if (!ctx) return;
 
-    ctx.lineWidth = 1;
+    ctx.lineWidth = width;
     ctx.lineCap = 'round'
     ctx.strokeStyle = color
   }, [])
@@ -70,40 +73,62 @@ const Canvas: React.FC = () => {
     ctx.strokeStyle = color
   }, [color])
 
+
+  const submitCanvas = async () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const imageURL = canvas.toDataURL("image/png");
+    //we can use this imageURL to save the image, or even download it 
+
+
+
+    clearCanvas()
+  }
   return (
-    <div className="section max-md:hidden">
+    <div className="section max-md:hidden overflow-hidden">
       <h2 className="text-base mb-3 text-center">Leave your mark, <span className="text-primary">
         {visitor}
       </span>
       </h2>
-      <nav className="flex items-center gap-3 bg-secondary text-primary p-3  rounded-xl text-sm ">
+      <Separator />
 
-        <button onClick={clearCanvas} className="text-primary ">
+      <nav className="flex justify-between items-center gap-3  text-primary p-3  rounded-xl text-sm w-full">
+        <div className="flex items-center gap-3"><button onClick={clearCanvas} >
           <DeleteForever />
         </button>
-        <label className="flex gap-2 items-center">
-          Brush:
-          <input
-            type="range"
-            min="1"
-            max="10"
-            onChange={(e) => changeWidth(Number(e.target.value))}
-            className="w-10"
-          />
-        </label>
+          <label className="flex gap-2 items-center">
+            Brush:
+            <input
+              type="range"
 
-        <label className="flex gap-2 items-center" htmlFor="">
-          <span>Color: </span>
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => setColor(e.target.value)}
-            className={`bg-secondary cursor-pointer`}
-          />
-        </label>
+              value={width}
+              onChange={(e) => changeWidth(Number(e.target.value))}
+              min="1"
+              max="10"
+              className="w-10"
+            />
+          </label>
+
+          <label className="flex gap-2 items-center" htmlFor="">
+            <span>Color: </span>
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              className={`bg-background cursor-pointer boreder-none p-0 `}
+            />
+          </label></div>
+
+
+        <button onClick={submitCanvas} >
+          <Send className="w-4" />
+        </button>
+
+
 
       </nav>
-      <Separator className="my-1 " />
+      <Separator className="mb-3" />
       <canvas
         ref={canvasRef}
         onMouseDown={startDrawing}
