@@ -10,7 +10,6 @@ const Education = () => {
             <p className="text-sm">{item.timeline}</p>
             <h2 className="font-bold  text-primary">{item.institution}</h2>
             <h2 className="text-sm">{item.course}</h2>
-            <p className="text-xs italic text-primary">{item.rank} stds.</p>
           </div>
         ))}
       </div>
