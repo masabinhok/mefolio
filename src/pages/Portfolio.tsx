@@ -1,5 +1,6 @@
 import AboutMe from "@/components/AboutMe"
 import EduExp from "@/components/EduExp"
+import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
 
 const Portfolio = () => {
@@ -8,6 +9,7 @@ const Portfolio = () => {
       <AboutMe />
       <EduExp />
       <Projects />
+      <Footer />
     </main>
   )
 }
