@@ -12,7 +12,7 @@ const Projects = () => {
 
   return (
     <main className="section">
-      <div className="flex justify-between items-center mb-5">
+      <div className="flex justify-between items-center mb-5 max-md:text-sm">
         <h2 className="sec-head cursor-no-drop">Recent Projects <ArrowRightAltSharp className="inline" /></h2>
         <Link to="/projects">
           <h2 className="sec-head text-primary">More Projects <ArrowBigUpDashIcon className="inline" /></h2>
