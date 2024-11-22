@@ -79,6 +79,12 @@ const Canvas: React.FC = () => {
     if (!canvas) return;
 
     const imageURL = canvas.toDataURL("image/png");
+
+    const link = document.createElement("a");
+    link.href = imageURL;
+    link.download = `${visitor}-mark.png`
+    link.click()
+
     //we can use this imageURL to save the image, or even download it 
 
 
