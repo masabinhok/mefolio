@@ -15,6 +15,7 @@ router.post('/name', async(req, res)=>{
   const {name} = req.body;
   const ip = requestIp.getClientIp(req);
   const location = geoip.lookup(ip);
+  console.log(location);
   const agent = useragent.parse(req.headers['user-agent']);
   const uuid = uuidv4(); 
 
@@ -34,10 +35,10 @@ router.post('/name', async(req, res)=>{
       latitude: location.ll ? location.ll[0] : null,
       longitude: location.ll ? location.ll[1] : null,
     }: {},
-    // device: {
-    //   browser: JSON.stringify(agent.family)  || 'Unknown',
-    //   os: agent.os? `${agent.os.family} ${agent.os.major}` : 'Unknown',
-    // },
+    device: {
+      browser: agent.family || 'Unknown',
+      os: agent.os? `${agent.os.family} ${agent.os.major}` : 'Unknown',
+    },
     behavior: {
       referrer, 
       timeSpent: 0,

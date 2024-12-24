@@ -13,14 +13,13 @@ const visitorSchema = new mongoose.Schema({
     longitude: Number,
   },
   device: {
-    browser: String,
-    os: String,
-    type: String, // Desktop, Mobile, etc.
-    screenResolution: String,
+    browser: { type: String, required: true },
+    os: { type: String, required: true },
+    type: { type: String }, 
   },
   behavior: {
     referrer: String,
-    timeSpent: Number, // in seconds
+    timeSpent: Number, 
     pagesVisited: [String],
   },
 });
