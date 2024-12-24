@@ -64,4 +64,37 @@ router.post('/name', async(req, res)=>{
   }
 })
 
+router.post('/image', async(req, res)=>{
+  const {uuid, cloudinaryURL} = req.body;
+  if(!uuid || !cloudinaryURL){
+    return res.status(400).json({
+      success: false,
+      message: 'Please provide a valid UUID and image URL.'
+    })
+  }
+  try {
+    const visitor = await Visitor.findOne({uuid});
+    if(!visitor){
+      return res.status(404).json({
+        success: false,
+        message: 'Visitor not found.'
+      })
+    }
+    visitor.markURLs.push(cloudinaryURL);
+    await visitor.save();
+    res.status(200).json({
+      success: true,
+      visitor,
+      message: 'Image URL saved successfully.'
+    })
+  }catch(error){
+    console.log('Error saving visitor: ', error);
+    res.status(400).json({
+      success: false,
+      visitor: null,
+      message: 'Couldnot save visitor.'
+    })
+  }
+})
+
 export default router;
