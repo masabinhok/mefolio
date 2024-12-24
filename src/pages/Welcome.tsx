@@ -17,42 +17,40 @@ import { useVisitor } from "@/context/VisitorContext";
 
 
 const Welcome = () => {
-  const { name, setName, setVisitor } = useVisitor();
+  const { name, setName, visitor, setVisitor } = useVisitor();
   const [hasName, setHasName] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgess] = useState(13);
   const [portfolio, setPortfolio] = useState(false);
 
   const loadPortfolio = useCallback(() => {
-    setTimeout(() => {
-      setProgess(13);
-    }, 500)
+    setProgess(0); // Reset progress at the start
 
-    setTimeout(() => {
-      setProgess(69);
-    }, 1000)
+
 
     setTimeout(() => {
       setProgess(96);
-    }, 1500)
+    }, 1000);
 
     setTimeout(() => {
-      setProgess(100);
+      setProgess(69);
+    }, 1500);
+
+
+    setTimeout(() => {
+      setProgess(0);
       setLoading(false);
       setPortfolio(true);
-    }, 2000)
-
+    }, 2000);
   }, []);
 
+
   useEffect(() => {
-    const storedName = localStorage.getItem('name');
-    if (storedName) {
+    if (visitor?.name) {
       setHasName(true);
-      setName(storedName);
       setLoading(true);
       loadPortfolio();
     }
-
   }, [setName, loadPortfolio])
 
   const handleSave = async () => {
@@ -62,19 +60,13 @@ const Welcome = () => {
     }
 
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5-second timeout
-
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/visitor/name`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name }),
-        signal: controller.signal,
       });
-
-      clearTimeout(timeoutId);
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -88,7 +80,9 @@ const Welcome = () => {
         localStorage.setItem('visitor', JSON.stringify(data.visitor));
         setVisitor(data.visitor);
         setHasName(true);
-        loadPortfolio();
+        setLoading(true); // Ensure loading is set immediately
+        setProgess(0); // Reset progress to 0 before starting
+        loadPortfolio(); // Start loading the portfolio
       } else {
         console.error("Failed to save name:", data.message);
       }
@@ -100,6 +94,7 @@ const Welcome = () => {
       }
     }
   };
+
 
   if (portfolio) {
     return <Portfolio />
@@ -113,7 +108,7 @@ const Welcome = () => {
         Hello, {" "}
         <span className="text-primary">
           {hasName ? (
-            name
+            visitor?.name
           ) : (
             <Dialog>
               <DialogTrigger asChild>
@@ -157,7 +152,11 @@ const Welcome = () => {
 
       </h2>
       {
-        loading ? (<Progress className="w-[200px]" value={progress} />) : null
+        loading ? (<>
+          <Progress className="w-[200px]" value={progress} />
+          <span className="text-sm">{progress}</span>
+        </>
+        ) : null
       }
 
 
