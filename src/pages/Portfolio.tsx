@@ -4,6 +4,7 @@ import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
 
+
 const Portfolio = () => {
   return (
     <main className="min-h-screen bg-background p-5 flex flex-col items-center w-full">
@@ -12,7 +13,6 @@ const Portfolio = () => {
       <Projects />
       <Canvas />
       <Footer />
-
     </main>
   )
 }

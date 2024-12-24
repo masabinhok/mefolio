@@ -1,4 +1,4 @@
-import { react, vite } from "@/assets";
+import { cupid01, cupid02, cupid03, cupid04, cupid05} from "@/assets";
 
 export const projects = [
   {
@@ -6,7 +6,6 @@ export const projects = [
     subtitle: "Digitalize Nepali marketplace and services.",
     demoAt: "https://www.sabin.conexus.vercel.app",
     imageURL: [
-      react, vite, react, vite,
     ],
     githubLink: "https://github.com/masabinhok/conexusHub",
     techStack :[
@@ -14,15 +13,15 @@ export const projects = [
     ]
   },
   {
-    title: "Stash",
-    subtitle: "File Storage Solution",
-    demoAt: "https://www.sabin.stash.vercel.app",
+    title: "Cupid",
+    subtitle: "Find love and have a good time together.",
+    demoAt: "https://www.cupidjsm.vercel.app",
     imageURL: [
-      react, vite, react, vite,
+      cupid01, cupid02, cupid03,cupid04, cupid05
     ],
-    githubLink: "https://www.github.com/masabinhok/stash",
+    githubLink: "https://www.github.com/masabinhok/cupid-jsm",
     techStack :[
-      "Next.js", "Appwrite", "TailwindCSS",
+      "React", "Node.js", "MongoDB", "Express"
     ]
   }
 ]

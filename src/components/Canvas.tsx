@@ -82,7 +82,7 @@ const Canvas: React.FC = () => {
 
     const link = document.createElement("a");
     link.href = imageURL;
-    link.download = `${visitor}-mark.png`
+    link.download = `${visitor?.uuid}-mark.png`
     link.click()
 
     //we can use this imageURL to save the image, or even download it 
@@ -94,7 +94,7 @@ const Canvas: React.FC = () => {
   return (
     <div className="section max-md:hidden overflow-hidden">
       <h2 className="text-base mb-3 text-center">Leave your mark, <span className="text-primary">
-        {visitor}
+        {visitor?.name}
       </span>
       </h2>
       <Separator />
