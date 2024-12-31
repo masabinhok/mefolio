@@ -3,6 +3,7 @@ import Canvas from "@/components/Canvas"
 import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
+import VisitorsCount from "@/components/VisitorsCount"
 
 
 const Portfolio = () => {
@@ -13,6 +14,7 @@ const Portfolio = () => {
       <Projects />
       <Canvas />
       <Footer />
+      <VisitorsCount />
     </main>
   )
 }

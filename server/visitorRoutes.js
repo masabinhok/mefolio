@@ -97,4 +97,22 @@ router.post('/image', async(req, res)=>{
   }
 })
 
+router.get('/count', async(req, res)=>{
+  try {
+    const count = await Visitor.countDocuments();
+    res.status(200).json({
+      success: true,
+      count,
+      message: 'Visitor count retrieved successfully.'
+    })
+  }catch(error){
+    console.log('Error retrieving visitor count: ', error);
+    res.status(400).json({
+      success: false,
+      count: 0,
+      message: 'Couldnot retrieve visitor count.'
+    })
+  }
+})
+
 export default router;
