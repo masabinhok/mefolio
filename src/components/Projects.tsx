@@ -24,13 +24,13 @@ const Projects = () => {
           <div key={project.title} className=" flex flex-col p-3 shadow-sm shadow-primary rounded-xl">
             <div onMouseEnter={() => {
               console.log(index)
-              if (index < 3) {
+              if (index < project.imageURL.length -1 ) {
                 setIndex(index + 1)
                 console.log(index)
               }
               else setIndex(0);
             }}>
-              <img className="h-[300px] w-full tranimate " src={project.imageURL[index]} alt={project.title} />
+              <img className="h-[300px] w-full tranimate object-cover " src={project.imageURL[index]} alt={project.title} />
             </div>
             <h2 className="font-bold text-primary">{project.title}</h2>
             <h3 className="text-sm line-clamp-1 ">{project.subtitle}</h3>
