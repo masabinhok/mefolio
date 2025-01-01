@@ -3,6 +3,7 @@ import Canvas from "@/components/Canvas"
 import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
+import VisitorData from "@/components/VisitorData"
 import VisitorsCount from "@/components/VisitorsCount"
 
 
@@ -15,6 +16,7 @@ const Portfolio = () => {
       <Canvas />
       <Footer />
       <VisitorsCount />
+      <VisitorData/>
     </main>
   )
 }
