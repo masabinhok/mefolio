@@ -1,5 +1,5 @@
 import { IVisitor } from "@/types";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface VisitorContextType {
   visitor: IVisitor;
@@ -7,6 +7,7 @@ interface VisitorContextType {
   setName: (name: string) => void;
   name: string;
   visitorCount: number;
+  fetchVisitorsCount: () => void;
 }
 
 const VisitorContext = createContext<VisitorContextType | undefined>(undefined);
@@ -14,29 +15,29 @@ const VisitorContext = createContext<VisitorContextType | undefined>(undefined);
 export const VisitorProvider = ({ children }: { children: ReactNode }) => {
   const [name, setName] = useState<string>('');
   const storedVisitor = localStorage.getItem('visitor');
-  const [visitorCount, setVisitorCount] = useState<number>(0);
-  useEffect(() => {
-    const fetchVisitorsCount = async () => {
-      try {
-        await fetch(`${import.meta.env.VITE_SERVER_URL}/visitor/count`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        }).then(res => res.json()).then(data => {
-          setVisitorCount(data.count);
-          localStorage.setItem('visitorCount', JSON.stringify(data.count));
-        });
-      }
-      catch (error) {
-        console.error(error);
-      }
+  const [visitorCount, setVisitorCount] = useState<number>(JSON.parse(localStorage.getItem('visitorCount') || '0'));
+
+  const fetchVisitorsCount = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_SERVER_URL}/visitor/count`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      }).then(res => res.json()).then(data => {
+        setVisitorCount(data.count);
+        localStorage.setItem('visitorCount', JSON.stringify(data.count));
+      });
     }
-    fetchVisitorsCount();
-  }, [])
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+
   const [visitor, setVisitor] = useState<IVisitor>(storedVisitor ? JSON.parse(storedVisitor) : {} as IVisitor);
   return (
-    <VisitorContext.Provider value={{ visitor, setVisitor, setName, name, visitorCount }}>
+    <VisitorContext.Provider value={{ visitor, setVisitor, setName, name, visitorCount, fetchVisitorsCount }}>
       {children}
     </VisitorContext.Provider>
   );

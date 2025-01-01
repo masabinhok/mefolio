@@ -17,7 +17,7 @@ import { useVisitor } from "@/context/VisitorContext";
 
 
 const Welcome = () => {
-  const { name, setName, visitor, setVisitor } = useVisitor();
+  const { name, setName, visitor, setVisitor, fetchVisitorsCount } = useVisitor();
   const [hasName, setHasName] = useState(false);
   const [loading, setLoading] = useState(false);
   const [progress, setProgess] = useState(13);
@@ -66,7 +66,7 @@ const Welcome = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ name }),
-      });
+      })
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -80,6 +80,7 @@ const Welcome = () => {
         localStorage.setItem('visitor', JSON.stringify(data.visitor));
         setVisitor(data.visitor);
         setHasName(true);
+        fetchVisitorsCount();
         setLoading(true); // Ensure loading is set immediately
         setProgess(0); // Reset progress to 0 before starting
         loadPortfolio(); // Start loading the portfolio
