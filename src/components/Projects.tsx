@@ -6,9 +6,17 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 
-const Projects = () => {
-  const [index, setIndex] = useState(0);
+const Projects: React.FC = () => {
+  const [indices, setIndices] = useState<{ [key: string]: number }>({
+    "Conexus": 0,
+    "Cupid": 0
+  });
 
+  const handleMouseEnter = (projectTitle: string, imageCount: number) => {
+    setIndices((prev) => ({
+      ...prev, [projectTitle]: (prev[projectTitle] + 1) % imageCount || 0
+    }))
+  }
 
   return (
     <main className="section">
@@ -22,15 +30,8 @@ const Projects = () => {
       <section className=" grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
         {projects.map((project) => (
           <div key={project.title} className=" flex flex-col p-3 shadow-sm shadow-primary rounded-xl">
-            <div onMouseEnter={() => {
-              console.log(index)
-              if (index < project.imageURL.length -1 ) {
-                setIndex(index + 1)
-                console.log(index)
-              }
-              else setIndex(0);
-            }}>
-              <img className="h-[300px] w-full tranimate object-cover " src={project.imageURL[index]} alt={project.title} />
+            <div onMouseEnter={() => handleMouseEnter(project.title, project.imageURL.length)} className="relative h-[300px] w-full rounded-xl overflow-hidden">
+              <img className="h-[300px] w-full tranimate object-cover " src={project.imageURL[indices[project.title]]} alt={project.title} />
             </div>
             <h2 className="font-bold text-primary">{project.title}</h2>
             <h3 className="text-sm line-clamp-1 ">{project.subtitle}</h3>

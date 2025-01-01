@@ -23,3 +23,12 @@ export interface IVisitor {
   };
   visitorRank: number;
 }
+
+export interface IProject {
+  title: string;
+  subtitle: string;
+  demoAt: string;
+  imageURL: string[];
+  githubLink: string;
+  techStack: string[];
+}
