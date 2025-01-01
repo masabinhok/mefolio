@@ -9,10 +9,10 @@ const VisitorData = () => {
         {visitor.name} is visiting from {visitor.device.os} using a browser based on {' '}
         {visitor.device.browser} from {" "}{visitor.location.city}, {visitor.location.country}.
         | {visitor.location.latitude} | {visitor.location.longitude} |
-        <span>{" "} {visitorCount} visitors have visited this site.</span>
+        <span>{" "} You are {visitor.visitorRank}th person to visit this site out of {visitorCount} total visitors.</span>
       </div>
       <div>
-        
+
       </div>
     </section>
   )

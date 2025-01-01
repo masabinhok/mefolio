@@ -21,4 +21,5 @@ export interface IVisitor {
     timeSpent: number; // in seconds
     pagesVisited: string[];
   };
+  visitorRank: number;
 }

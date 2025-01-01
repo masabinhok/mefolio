@@ -24,6 +24,9 @@ router.post('/name', async(req, res)=>{
   const visitTime = new Date();
   const referrer = req.headers.referer || req.req.headers.referrer || 'Direct';
 
+  const visitorCount = await Visitor.countDocuments();  
+  const visitorRank = visitorCount + 1;
+
   const visitorData = {
     name,// Ensure the name field is provided
     uuid, 
@@ -44,6 +47,7 @@ router.post('/name', async(req, res)=>{
       timeSpent: 0,
       pagesVisited: [],
     },
+    visitorRank,
   };
 
 

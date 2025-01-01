@@ -23,6 +23,7 @@ const visitorSchema = new mongoose.Schema({
     timeSpent: { type: Number, default: 0 }, // in seconds
     pagesVisited: { type: [String], default: [] },
   },
+  visitorRank: { type: Number},
 });
 
 const Visitor = mongoose.model('Visitor', visitorSchema);
