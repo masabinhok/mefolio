@@ -4,10 +4,10 @@ import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
 import VisitorData from "@/components/VisitorData"
-import VisitorsCount from "@/components/VisitorsCount"
 
 
 const Portfolio = () => {
+
   return (
     <main className="min-h-screen bg-background p-5 flex flex-col items-center w-full">
       <AboutMe />
@@ -15,8 +15,7 @@ const Portfolio = () => {
       <Projects />
       <Canvas />
       <Footer />
-      <VisitorsCount />
-      <VisitorData/>
+      <VisitorData />
     </main>
   )
 }
