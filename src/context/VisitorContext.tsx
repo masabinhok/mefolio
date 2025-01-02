@@ -1,5 +1,5 @@
 import { IVisitor } from "@/types";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface VisitorContextType {
   visitor: IVisitor;
@@ -17,6 +17,9 @@ export const VisitorProvider = ({ children }: { children: ReactNode }) => {
   const storedVisitor = localStorage.getItem('visitor');
   const [visitorCount, setVisitorCount] = useState<number>(JSON.parse(localStorage.getItem('visitorCount') || '0'));
 
+  useEffect(() => {
+    fetchVisitorsCount();
+  })
   const fetchVisitorsCount = async () => {
     try {
       await fetch(`${import.meta.env.VITE_SERVER_URL}/visitor/count`, {
