@@ -4,7 +4,7 @@ export const projects = [
   {
     title: "Conexus",
     subtitle: "Digitalize Nepali marketplace and services.",
-    demoAt: "https://www.sabin.conexus.vercel.app",
+    demoAt: "https://conexus-hub.vercel.app/",
     imageURL: [conexus01, conexus02, conexus03, conexus04, conexus05, conexus06
     ],
     githubLink: "https://github.com/masabinhok/conexusHub",
