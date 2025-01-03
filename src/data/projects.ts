@@ -15,7 +15,7 @@ export const projects = [
   {
     title: "Cupid",
     subtitle: "Find love and have a good time together.",
-    demoAt: "https://www.cupidjsm.vercel.app",
+    demoAt: "https://cupidjsm.vercel.app/",
     imageURL: [
       cupid01, cupid02, cupid03, cupid04, cupid05
     ],
