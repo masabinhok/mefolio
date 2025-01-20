@@ -20,14 +20,11 @@ const Welcome = () => {
   const { name, setName, visitor, setVisitor, fetchVisitorsCount } = useVisitor();
   const [hasName, setHasName] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [progress, setProgess] = useState(13);
+  const [progress, setProgess] = useState(736021);
   const [portfolio, setPortfolio] = useState(false);
 
   const loadPortfolio = useCallback(() => {
     setProgess(0); // Reset progress at the start
-
-
-
     setTimeout(() => {
       setProgess(96);
     }, 1000);
@@ -40,7 +37,7 @@ const Welcome = () => {
     setTimeout(() => {
       setProgess(0);
       setLoading(false);
-      setPortfolio(true);
+      // setPortfolio(true);
     }, 2000);
   }, []);
 
@@ -103,7 +100,7 @@ const Welcome = () => {
 
   return (
     <div className="bg-background min-h-screen flex flex-col gap-3 items-center justify-center text-secondary text-center p-10">
-      <h2 className={cn("max-w-[600px]",
+      {/* <h2 className={cn("max-w-[600px]",
         loading ? 'slide-up' : null
       )}>
         Hello, {" "}
@@ -151,7 +148,15 @@ const Welcome = () => {
         </span>
         {" "} <br /> I am delighted to have you here. I hope you have a wonderful experience exploring my portfolio!
 
+      </h2> */}
+
+
+      <h2>
+        Currently under development. Please check back later.
       </h2>
+
+      <Progress className="w-[200px]" value={progress} />
+      <span className="text-sm">{progress}</span>
       {
         loading ? (<>
           <Progress className="w-[200px]" value={progress} />
@@ -159,6 +164,7 @@ const Welcome = () => {
         </>
         ) : null
       }
+
 
 
     </div>

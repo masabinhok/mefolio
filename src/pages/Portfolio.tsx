@@ -4,9 +4,14 @@ import EduExp from "@/components/EduExp"
 import Footer from "@/components/Footer"
 import Projects from "@/components/Projects"
 import VisitorData from "@/components/VisitorData"
+import { useEffect } from "react"
 
 
 const Portfolio = () => {
+
+  useEffect(() => {
+    localStorage.clear();
+  }, [])
   return (
     <main className="min-h-screen bg-background p-5 flex flex-col items-center w-full">
       <AboutMe />
